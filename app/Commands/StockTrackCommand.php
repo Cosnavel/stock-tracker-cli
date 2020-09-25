@@ -5,21 +5,21 @@ namespace App\Commands;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class InspiringCommand extends Command
+class StockTrackCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'track {symbol}';
+    protected $signature = 'command:name';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display the current value of the stock with given symbol';
+    protected $description = 'Command description';
 
     /**
      * Execute the console command.
@@ -28,8 +28,7 @@ class InspiringCommand extends Command
      */
     public function handle()
     {
-        $symbol = $this->argument('symbol');
-        $this->info('Given symbol: '.$symbol);
+        //
     }
 
     /**
@@ -39,7 +38,7 @@ class InspiringCommand extends Command
      *
      * @return void
      */
-    public function schedule(Schedule $schedule)
+    public function schedule(Schedule $schedule): void
     {
         // $schedule->command(static::class)->everyMinute();
     }
