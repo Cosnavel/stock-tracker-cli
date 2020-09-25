@@ -17,6 +17,8 @@
     ],
     "require": {
         "php": "^7.3",
+        "guzzlehttp/guzzle": "^6.5.5",
+        "illuminate/http": "^8.0",
         "laravel-zero/framework": "^8.0"
     },
     "require-dev": {
@@ -40,5 +42,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["application"]
+    "bin": ["artisan"]
 }
