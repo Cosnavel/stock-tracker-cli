@@ -30,15 +30,17 @@ class CurrentStockPriceCommand extends Command
     public function handlePrice($response)
     {
         if ($response) {
-            $this->task("Fetching Stock Data", function () {
+            $this->task('Fetching Stock Data', function () {
                 return true;
             });
             $this->info("Current price: $response $");
+
             return;
         }
-        $this->task("Fetching Stock Data", function () {
+        $this->task('Fetching Stock Data', function () {
             return false;
         });
+
         return $this->error('Stock not found!');
     }
 
@@ -47,10 +49,12 @@ class CurrentStockPriceCommand extends Command
         $symbol = $this->argument('symbol');
         $this->handlePrice($httpClientService->fetchPrice($symbol));
     }
+
     /**
      * Define the command's schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
+     *
      * @return void
      */
     public function schedule(Schedule $schedule): void

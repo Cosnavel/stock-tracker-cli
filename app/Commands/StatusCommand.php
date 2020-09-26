@@ -30,15 +30,16 @@ class StatusCommand extends Command
     public function handle(HttpClientService $httpClientService)
     {
         $status = $httpClientService->fetchStatus()->status;
-        $this->task("Api Status", function () use ($status) {
-            return $status == "up" ? true : false;
+        $this->task('Api Status', function () use ($status) {
+            return $status == 'up' ? true : false;
         });
     }
 
     /**
      * Define the command's schedule.
      *
-     * @param  \Illuminate\Console\Scheduling\Schedule $schedule
+     * @param \Illuminate\Console\Scheduling\Schedule $schedule
+     *
      * @return void
      */
     public function schedule(Schedule $schedule): void

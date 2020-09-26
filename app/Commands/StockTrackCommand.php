@@ -33,6 +33,7 @@ class StockTrackCommand extends Command
         $this->info('Given symbol: '.$symbol);
         /* Todo: interactive Menu and Flag support to include the other commands */
     }
+
     /**
      * Define the command's schedule.
      *
