@@ -6,21 +6,21 @@ use App\Services\HttpClientService;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class StockTrackCommand extends Command
+class StatusCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'track {symbol}';
+    protected $signature = 'status';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display the info of the stock with given symbol';
+    protected $description = 'Display status of Stock Api';
 
     /**
      * Execute the console command.
@@ -29,9 +29,10 @@ class StockTrackCommand extends Command
      */
     public function handle(HttpClientService $httpClientService)
     {
-        $symbol = $this->argument('symbol');
-        $this->info('Given symbol: '.$symbol);
-        /* Todo: interactive Menu and Flag support to include the other commands */
+        $status = $httpClientService->fetchStatus()->status;
+        $this->task('Api Status', function () use ($status) {
+            return $status == 'up' ? true : false;
+        });
     }
 
     /**

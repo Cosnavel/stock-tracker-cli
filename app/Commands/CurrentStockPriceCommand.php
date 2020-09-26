@@ -2,17 +2,18 @@
 
 namespace App\Commands;
 
+use App\Services\HttpClientService;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class InspiringCommand extends Command
+class CurrentStockPriceCommand extends Command
 {
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'track {symbol}';
+    protected $signature = 'price {symbol}';
 
     /**
      * The description of the command.
@@ -26,10 +27,27 @@ class InspiringCommand extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handlePrice($response)
+    {
+        if ($response) {
+            $this->task('Fetching Stock Data', function () {
+                return true;
+            });
+            $this->info("Current price: $response $");
+
+            return;
+        }
+        $this->task('Fetching Stock Data', function () {
+            return false;
+        });
+
+        return $this->error('Stock not found!');
+    }
+
+    public function handle(HttpClientService $httpClientService)
     {
         $symbol = $this->argument('symbol');
-        $this->info('Given symbol: '.$symbol);
+        $this->handlePrice($httpClientService->fetchPrice($symbol));
     }
 
     /**
@@ -39,7 +57,7 @@ class InspiringCommand extends Command
      *
      * @return void
      */
-    public function schedule(Schedule $schedule)
+    public function schedule(Schedule $schedule): void
     {
         // $schedule->command(static::class)->everyMinute();
     }
