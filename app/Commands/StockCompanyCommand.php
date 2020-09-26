@@ -2,38 +2,43 @@
 
 namespace App\Commands;
 
+use App\Services\Logoable;
+use Illuminate\Support\Str;
 use App\Services\HttpClientService;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
-class CurrentStockPriceCommand extends Command
+class StockCompanyCommand extends Command
 {
+    use Logoable;
     /**
      * The signature of the command.
      *
      * @var string
      */
-    protected $signature = 'price {symbol}';
+    protected $signature = 'company {symbol}';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Display the current value of the stock with given symbol';
+    protected $description = 'Display information about the company of the stock with given symbol';
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
-    public function handlePrice($response)
+    public function handleCompany($response)
     {
         if ($response) {
             $this->task("Fetching Stock Data", function () {
                 return true;
             });
-            $this->info("Current price: $response $");
+            $this->line(Logoable::convertStringToAscii($response->companyName));
+
+            $this->line("Symbol: $response->symbol");
+            $this->line("Website: $response->website");
+            $this->line("Exchange: $response->exchange");
+            $this->line("CEO: $response->CEO");
+            $this->line("Headquarter: $response->city $response->country");
+            $this->line("Description: ".Str::limit($response->description, 200));
             return;
         }
         $this->task("Fetching Stock Data", function () {
@@ -45,8 +50,9 @@ class CurrentStockPriceCommand extends Command
     public function handle(HttpClientService $httpClientService)
     {
         $symbol = $this->argument('symbol');
-        $this->handlePrice($httpClientService->fetchPrice($symbol));
+        $this->handleCompany($httpClientService->fetchCompany($symbol));
     }
+
     /**
      * Define the command's schedule.
      *

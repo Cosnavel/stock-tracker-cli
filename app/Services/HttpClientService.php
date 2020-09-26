@@ -26,10 +26,6 @@ class HttpClientService
     {
         return json_decode(Http::get("{$this->url}stock/{$symbol}/quote/latestPrice{$this->token}"));
     }
-    public function fetchBook($symbol)
-    {
-        return json_decode(Http::get("{$this->url}stock/{$symbol}/book{$this->token}"));
-    }
     public function fetchQuote($symbol)
     {
         return json_decode(Http::get("{$this->url}stock/{$symbol}/quote{$this->token}"));
