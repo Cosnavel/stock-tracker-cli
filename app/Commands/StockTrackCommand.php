@@ -20,28 +20,18 @@ class StockTrackCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display the info of the stock with given symbol';
+     protected $description = 'Display the info of the stock with given symbol';
 
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function handleCompany($response)
-    {
-        if ($response) {
-            $this->info($response->website);
-            return;
-        }
-        return $this->error('Stock not found!');
-    }
     public function handle(HttpClientService $httpClientService)
     {
         $symbol = $this->argument('symbol');
         $this->info('Given symbol: '.$symbol);
-        $this->info($httpClientService::convertStringToAscii($symbol));
-        $this->handleCompany($httpClientService->fetchCompany($symbol));
-    }
+       /* Todo: interactive Menu and Flag support to include the other commands
 
     /**
      * Define the command's schedule.
