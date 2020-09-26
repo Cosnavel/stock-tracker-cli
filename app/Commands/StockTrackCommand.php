@@ -27,11 +27,20 @@ class StockTrackCommand extends Command
      *
      * @return mixed
      */
+    public function handleCompany($response)
+    {
+        if ($response) {
+            $this->info($response->website);
+            return;
+        }
+        return $this->error('Stock not found!');
+    }
     public function handle(HttpClientService $httpClientService)
     {
         $symbol = $this->argument('symbol');
         $this->info('Given symbol: '.$symbol);
         $this->info($httpClientService::convertStringToAscii($symbol));
+        $this->handleCompany($httpClientService->fetchCompany($symbol));
     }
 
     /**
