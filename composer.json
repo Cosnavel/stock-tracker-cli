@@ -19,9 +19,11 @@
         "php": "^7.3",
         "guzzlehttp/guzzle": "^6.5.5",
         "illuminate/http": "^8.0",
+        "laminas/laminas-text": "^2.7",
         "laravel-zero/framework": "^8.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.8",
         "mockery/mockery": "^1.4.2",
         "phpunit/phpunit": "^9.3"
     },
