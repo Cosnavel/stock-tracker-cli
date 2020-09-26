@@ -22,11 +22,20 @@ class HttpClientService
     {
         return json_decode(Http::get("{$this->url}stock/{$symbol}/company{$this->token}"));
     }
-
-    # stock/$symbol/book
-# stock/$symbol/price
-# stock/$symbol/company
-# stock/$symbol/ohlc
-# stock/$symbol/logo
-# status
+    public function fetchPrice($symbol)
+    {
+        return json_decode(Http::get("{$this->url}stock/{$symbol}/quote/latestPrice{$this->token}"));
+    }
+    public function fetchBook($symbol)
+    {
+        return json_decode(Http::get("{$this->url}stock/{$symbol}/book{$this->token}"));
+    }
+    public function fetchQuote($symbol)
+    {
+        return json_decode(Http::get("{$this->url}stock/{$symbol}/quote{$this->token}"));
+    }
+    public function fetchStatus()
+    {
+        return json_decode(Http::get("{$this->url}status{$this->token}"));
+    }
 }

@@ -20,7 +20,7 @@ class StockTrackCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display the current value of the stock with given symbol';
+    protected $description = 'Display the info of the stock with given symbol';
 
     /**
      * Execute the console command.

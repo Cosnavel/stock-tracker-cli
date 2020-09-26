@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use App\Services\HttpClientService;
 use Illuminate\Console\Scheduling\Schedule;
 use LaravelZero\Framework\Commands\Command;
 
@@ -12,25 +13,46 @@ class CurrentStockPriceCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'price {symbol}';
 
     /**
      * The description of the command.
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = 'Display the current value of the stock with given symbol';
 
     /**
      * Execute the console command.
      *
      * @return mixed
      */
-    public function handle()
+    public function handlePrice($response)
     {
-        //
+        if ($response) {
+            $this->task("Fetching Stock Data", function () {
+                return true;
+            });
+            $this->line("line");
+            $this->info("info");
+            $this->comment("comment");
+            $this->question("question");
+            $this->error("error");
+            //$this->info($response->website);
+            dd($response);
+            return;
+        }
+        $this->task("Fetching Stock Data", function () {
+            return false;
+        });
+        return $this->error('Stock not found!');
     }
 
+    public function handle(HttpClientService $httpClientService)
+    {
+        $symbol = $this->argument('symbol');
+        $this->handlePrice($httpClientService->fetchPrice($symbol));
+    }
     /**
      * Define the command's schedule.
      *
