@@ -33,6 +33,7 @@ class StatusCommand extends Command
         $this->task('Api Status', function () use ($status) {
             return $status == 'up' ? true : false;
         });
+        $this->notify('Stock Api', "Status: $status");
     }
 
     /**

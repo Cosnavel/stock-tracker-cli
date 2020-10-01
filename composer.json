@@ -19,8 +19,10 @@
         "php": "^7.3",
         "guzzlehttp/guzzle": "^6.5.5",
         "illuminate/http": "^8.0",
+        "intonate/tinker-zero": "^1.1",
         "laminas/laminas-text": "^2.7",
-        "laravel-zero/framework": "^8.0"
+        "laravel-zero/framework": "^8.0",
+        "nunomaduro/laravel-desktop-notifier": "^2.4"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
