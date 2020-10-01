@@ -7,12 +7,12 @@ To use the Stock Tracker you have to provide valid API Keys for a Stock Data Pro
 To build an executable, standalone Stock Tracker run: `php stock-tracker app:build stock-tracker`
 
 Supported Commands:
--`cap {symbol}`          Display market cap of the stock with the given symbol
--`company {symbol}`      Display information about the company of the stock with the given symbol
--`historic {symbol}`     Display historical price data of the stock with the given symbol
--`intraday {symbol}`     Display the intraday data of the stock with the given symbol
--`price {symbol}`        Display the current value of the stock with the given symbol
--`status`                Display status of Stock API
+- `cap {symbol}`          Display market cap of the stock with the given symbol
+- `company {symbol}`      Display information about the company of the stock with the given symbol
+- `historic {symbol}`     Display historical price data of the stock with the given symbol
+- `intraday {symbol}`     Display the intraday data of the stock with the given symbol
+- `price {symbol}`        Display the current value of the stock with the given symbol
+- `status`                Display status of Stock API
 
 Example:
 Will output the current market cap of Apple
