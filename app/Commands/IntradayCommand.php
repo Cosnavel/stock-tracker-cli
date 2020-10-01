@@ -22,7 +22,7 @@ class IntradayCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display the intraday data of the stock with given symbol';
+    protected $description = 'Display the intraday data of the stock with the given symbol';
 
     public function handleIntraday($response)
     {

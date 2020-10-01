@@ -20,7 +20,7 @@ class StatusCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display status of Stock Api';
+    protected $description = 'Display status of Stock API';
 
     /**
      * Execute the console command.

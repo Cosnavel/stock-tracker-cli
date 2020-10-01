@@ -23,7 +23,7 @@ class StockCompanyCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display information about the company of the stock with given symbol';
+    protected $description = 'Display information about the company of the stock with the given symbol';
 
     public function handleCompany($response)
     {
