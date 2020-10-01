@@ -39,7 +39,7 @@ class StockCompanyCommand extends Command
             $this->line("CEO: $response->CEO");
             $this->line("Headquarter: $response->city $response->country");
             $this->line('Description: '.Str::limit($response->description, 200));
-            $this->notify("Data fetched", "Company Data for {$response->symbol}");
+            $this->notify('Data fetched', "Company Data for {$response->symbol}");
 
             return;
         }
