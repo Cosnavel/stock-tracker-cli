@@ -39,6 +39,7 @@ class StockCompanyCommand extends Command
             $this->line("CEO: $response->CEO");
             $this->line("Headquarter: $response->city $response->country");
             $this->line('Description: '.Str::limit($response->description, 200));
+            $this->notify("Data fetched", "Company Data for {$response->symbol}");
 
             return;
         }
@@ -46,7 +47,7 @@ class StockCompanyCommand extends Command
             return false;
         });
 
-        return $this->error('Stock not found!');
+        return $this->notify('Error', 'Stock not found!');
     }
 
     public function handle(HttpClientService $httpClientService)
