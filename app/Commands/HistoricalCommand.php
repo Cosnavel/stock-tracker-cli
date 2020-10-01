@@ -21,7 +21,7 @@ class HistoricalCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display historical price data of the stock with given symbol';
+    protected $description = 'Display historical price data of the stock with the given symbol';
 
     public function handleHistoric($response)
     {

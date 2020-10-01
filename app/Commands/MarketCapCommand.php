@@ -21,7 +21,7 @@ class MarketCapCommand extends Command
      *
      * @var string
      */
-    protected $description = 'Display market cap of the stock with given symbol';
+    protected $description = 'Display market cap of the stock with the given symbol';
 
     public function handleCap($response)
     {
