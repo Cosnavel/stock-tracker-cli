@@ -34,7 +34,7 @@ class CurrentStockPriceCommand extends Command
                 return true;
             });
             $this->info("Current price: $response $");
-            $this->notify("Stock Price", "Current price: $response $");
+            $this->notify("Stock Price", "Current price: $response $", 'https://storage.googleapis.com/iexcloud-hl37opg/api/logos/AAPL.png');
 
             return;
         }
