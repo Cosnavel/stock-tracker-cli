@@ -34,14 +34,14 @@ class CurrentStockPriceCommand extends Command
                 return true;
             });
             $this->info("Current price: $response $");
+            $this->notify("Stock Price", "Current price: $response $");
 
             return;
         }
         $this->task('Fetching Stock Data', function () {
             return false;
         });
-
-        return $this->error('Stock not found!');
+        return $this->notify('Error', 'Stock not found!');
     }
 
     public function handle(HttpClientService $httpClientService)
