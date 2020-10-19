@@ -22,7 +22,9 @@
         "intonate/tinker-zero": "^1.1",
         "laminas/laminas-text": "^2.7",
         "laravel-zero/framework": "^8.0",
-        "nunomaduro/laravel-desktop-notifier": "^2.4"
+        "nunomaduro/collision": "^5.0",
+        "nunomaduro/laravel-desktop-notifier": "^2.4",
+        "pestphp/pest": "^0.3.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
