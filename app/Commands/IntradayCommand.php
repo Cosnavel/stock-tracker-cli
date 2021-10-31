@@ -24,7 +24,7 @@ class IntradayCommand extends Command
      */
     protected $description = 'Display the intraday data of the stock with the given symbol';
 
-    public function handleIntraday($response)
+    public function handleIntraday($response): void
     {
         if ($response) {
             $this->task('Fetching Stock Data', function () {
@@ -47,7 +47,7 @@ class IntradayCommand extends Command
         return $this->error('Stock not found!');
     }
 
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $symbol = $this->argument('symbol');
         $this->handleIntraday($httpClientService->fetchQuote($symbol));
@@ -56,9 +56,7 @@ class IntradayCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

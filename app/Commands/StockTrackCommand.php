@@ -27,7 +27,7 @@ class StockTrackCommand extends Command
      *
      * @return mixed
      */
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $symbol = $this->argument('symbol');
         $this->info('Given symbol: '.$symbol);
@@ -37,9 +37,7 @@ class StockTrackCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

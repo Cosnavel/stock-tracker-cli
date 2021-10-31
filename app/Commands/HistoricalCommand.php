@@ -23,7 +23,7 @@ class HistoricalCommand extends Command
      */
     protected $description = 'Display historical price data of the stock with the given symbol';
 
-    public function handleHistoric($response)
+    public function handleHistoric($response): void
     {
         if ($response) {
             $this->task('Fetching Stock Data', function () {
@@ -43,7 +43,7 @@ class HistoricalCommand extends Command
         return $this->error('Stock not found!');
     }
 
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $symbol = $this->argument('symbol');
         $this->handleHistoric($httpClientService->fetchQuote($symbol));
@@ -52,9 +52,7 @@ class HistoricalCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

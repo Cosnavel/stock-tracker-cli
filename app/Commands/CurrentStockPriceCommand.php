@@ -45,7 +45,7 @@ class CurrentStockPriceCommand extends Command
         return $this->notify('Error', 'Stock not found!');
     }
 
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $symbol = $this->argument('symbol');
         $this->handlePrice($httpClientService->fetchPrice($symbol));
@@ -54,9 +54,7 @@ class CurrentStockPriceCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {
