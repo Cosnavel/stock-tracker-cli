@@ -27,7 +27,7 @@ class StatusCommand extends Command
      *
      * @return mixed
      */
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $status = $httpClientService->fetchStatus()->status;
         $this->task('Api Status', function () use ($status) {
@@ -39,9 +39,7 @@ class StatusCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

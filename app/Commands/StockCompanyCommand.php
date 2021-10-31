@@ -50,7 +50,7 @@ class StockCompanyCommand extends Command
         return $this->notify('Error', 'Stock not found!');
     }
 
-    public function handle(HttpClientService $httpClientService)
+    public function handle(HttpClientService $httpClientService): void
     {
         $symbol = $this->argument('symbol');
         $this->handleCompany($httpClientService->fetchCompany($symbol));
@@ -59,9 +59,7 @@ class StockCompanyCommand extends Command
     /**
      * Define the command's schedule.
      *
-     * @param \Illuminate\Console\Scheduling\Schedule $schedule
      *
-     * @return void
      */
     public function schedule(Schedule $schedule): void
     {

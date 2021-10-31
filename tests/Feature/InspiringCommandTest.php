@@ -8,10 +8,8 @@ class InspiringCommandTest extends TestCase
 {
     /**
      * A basic test example.
-     *
-     * @return void
      */
-    public function testInspiringCommand()
+    public function testInspiringCommand(): void
     {
         $this->artisan('inspiring')
              ->expectsOutput('Simplicity is the ultimate sophistication.')
